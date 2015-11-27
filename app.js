@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   resave: true,
   saveUninitialized: true,
-  secret: 'secrret long password for session 2015-11'
+  secret: 'secret long password for session 2015-11'
 }));
 app.use('/', routes);
 app.use('/users', users);
