@@ -21,11 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-  resave: true,
-  saveUninitialized: true,
-  secret: 'secret long password for session 2015-11'
-}));
+
 app.use('/', routes);
 app.use('/users', users);
 
@@ -50,6 +46,11 @@ if (app.get('env') === 'development') {
   });
 }
 
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: 'secret long password for session 2015-11'
+}));
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
